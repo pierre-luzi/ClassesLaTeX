@@ -1,0 +1,163 @@
+%------------------------------
+% Mise en page
+%------------------------------
+
+\RequirePackage{ae,lmodern}                                      % fontes vectorielles
+\RequirePackage[french]{babel}                                   % typographie française
+\RequirePackage[utf8]{inputenc}                                  % encodage d'entrée
+\RequirePackage[T1]{fontenc}                                     % encodage de sortie
+\RequirePackage[left=1cm,right=1cm,top=2cm,bottom=2cm]{geometry} % gestion des marges
+\RequirePackage[explicit]{titlesec}                              % mise en forme des titres
+%\RequirePackage{fancyhdr}                                       % en-têtes et pieds de page, en conflit avec la classe exam
+\RequirePackage{color}                                           % texte en couleur ?
+\RequirePackage{multicol}                                        % texte sur plusieurs colonnes
+
+\setlength\parindent{0pt}
+
+% Boîtes
+\RequirePackage{fancybox}
+\setlength{\shadowsize}{2pt}
+\RequirePackage[framemethod=TikZ]{mdframed}
+
+% Couleur
+\RequirePackage{xcolor}   % boîtes en couleur avec \fcolorbox
+%\RequirePackage{color}
+
+
+
+%------------------------------
+% Maths
+%------------------------------
+
+\RequirePackage{amssymb,amsmath,amsfonts}   %
+\DeclareMathOperator\Arg{Arg}               % déclaration d'un opérateur pour l'argument d'un nombre complexe
+
+\RequirePackage{nicefrac}                   %
+\RequirePackage{amsthm}                     %
+\RequirePackage{esvect}                     % vecteurs
+\RequirePackage{commath}                    % commandes mathématiques (notamment dérivées, différentielles, dérivées partielles)
+\RequirePackage{mathtools}                  % commande prescript pour les isotopes
+\RequirePackage{icomma}                     % virgule pour les nombre décimaux
+\RequirePackage{numprint}                   % affichage des grands nombres avec espace
+%\RequirePackage[squaren,Gray]{SIunits} % unités SI
+%\RequirePackage{sistyle}
+%\SIdecimalsign{,}
+\RequirePackage[load-configurations=abbrevations]{siunitx}
+\sisetup{locale=FR,detect-all,inter-unit-product=\ensuremath{\cdot}}
+%\RequirePackage{braket}                    % pour la notation bra-ket
+
+% Police identique en mode maths
+%\RequirePackage[italic]{mathastext}
+%\RequirePackage{isomath}
+
+
+
+%------------------------------
+% Environnements flottants
+%------------------------------
+
+\RequirePackage{float}                  % environnements flottants
+\RequirePackage{caption}                % légende
+\RequirePackage[position=b]{subcaption} % environnements subfigure et subtable + légende
+\RequirePackage{newfloat}               % création de nouveaux environnements
+\RequirePackage{graphicx}               % inclusion d'images
+\RequirePackage{wrapfig}
+
+
+
+%------------------------------
+% Tableaux
+%------------------------------
+
+\RequirePackage{array}
+\renewcommand{\arraystretch}{1.2}
+\RequirePackage{longtable} % tableau sur plusieurs pages
+\RequirePackage{multirow}  % fusionner des lignes
+\RequirePackage{colortbl}  % cellules colorées
+\RequirePackage{hhline}    % alternative à cline pour les cellules colorées
+
+
+
+%------------------------------
+% TikZ
+%------------------------------
+
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\pgfplotsset{/pgf/number format/use comma}
+\RequirePackage{tikzscale}
+
+% Bibliothèques
+\usetikzlibrary{babel}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes}
+\usetikzlibrary{shapes.symbols}
+\usetikzlibrary{optics}       % instruments d'optique
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+
+\tikzset{domaine/.style 2 args={domain=#1:#2}} % requis pour sélectionner le domaine lors d'un plot
+% exemple :
+% \draw plot[domain=0:3, samples=100] ( \x, {cos(deg(\x))} );
+
+% Circuitikz
+\RequirePackage[european, straightvoltages]{circuitikz}
+
+
+
+%------------------------------
+% Chimie
+%------------------------------
+
+% Equations chimiques
+\RequirePackage{chemmacros}
+\chemsetup{modules={reactions, isotopes, redox}}   % modules chargés par chemmacros
+%\chemsetup{phases/pos=sub}       % indiquer les phases en indice
+%\RequirePackage{mhchem}
+
+% Représentation de molécules
+\RequirePackage{chemfig}
+
+% Diagrammes énergétiques
+%\RequirePackage{modiagram}
+
+%\RequirePackage{mychemstry}         % représentations de Newman ?
+
+
+
+%------------------------------
+% Divers
+%------------------------------
+
+% Mise en forme conditionnelle
+\RequirePackage{ifthen}
+
+%
+\RequirePackage{etoolbox} % pour la personnalisation des environnements
+
+% Personnalisation des puces
+\RequirePackage{enumitem}
+
+% Caractères grecs droits
+\RequirePackage{upgreek}
+
+% Symboles Font awesome
+\RequirePackage{fontawesome}
+
+% Lien hyperlinks
+\RequirePackage{url}
+\RequirePackage{hyperref}
+\hypersetup{colorlinks,linkcolor={black},citecolor={darkred},urlcolor={blue}}
+
+% Package varioref
+\RequirePackage[french]{varioref}
+
+% Verbatim
+\RequirePackage{verbatim}
+
+% Environnement de commentaire
+\RequirePackage{comment}
+
+% Symboles supplémentaires
+\RequirePackage{latexsym}
+

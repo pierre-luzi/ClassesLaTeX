@@ -1,0 +1,249 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{ds}[2019/09/05 DS]
+
+\LoadClass[11pt,a4paper]{exam}
+\RequirePackage{packages}
+\RequirePackage{commandes}
+
+
+
+%------------------------------
+% Réglages de la classe
+%------------------------------
+
+% Géométrie
+\newgeometry{top=2cm,bottom=1cm,left=1cm,right=1cm}
+
+% Longueurs 
+\setlength{\columnsep}{1.2cm}
+
+% Compteurs
+\setcounter{secnumdepth}{3} % profondeur de la numérotation
+\newcounter{numero}
+
+% Couleur de section
+\definecolor{title-color}{RGB}{0,0,0}
+
+% Booléen pour la correction
+\ifthenelse{\equal{\detokenize{correction}}{\jobname}}{
+	\printanswers
+}{
+	\noprintanswers
+}
+
+
+
+%------------------------------
+% Options de la classe
+%------------------------------
+
+% Matière
+\newcommand\secmatiere{}
+\newcommand\headmatiere{}
+\DeclareOption{chi}{
+  \renewcommand\secmatiere{\raisebox{5pt}{\boldmath$\upchi$}}
+  \renewcommand\headmatiere{\raisebox{2.35pt}{\boldmath$\upchi$}}
+}
+\DeclareOption{phy}{
+  \renewcommand\secmatiere{\raisebox{3pt}{\boldmath$\upphi$}}
+  \renewcommand\headmatiere{\raisebox{1.5pt}{\boldmath$\upphi$}}
+}
+
+% Niveau
+\newcommand\niveau{}
+\DeclareOption{2nde}{\renewcommand\niveau{\selectfont\sffamily\bfseries{Physique-chimie 2\up{nde}}}}
+\DeclareOption{1spe}{\renewcommand\niveau{\selectfont\sffamily\bfseries{Physique-chimie 1\iere}}}
+\DeclareOption{Tspe}{\renewcommand\niveau{\selectfont\sffamily\bfseries{Physique-chimie Terminale}}}
+\DeclareOption{1es}{\renewcommand\niveau{\selectfont\sffamily\bfseries{Enseignement scientifique 1\iere}}}
+\DeclareOption{Tes}{\renewcommand\niveau{\selectfont\sffamily\bfseries{Enseignement scientifique Terminale}}}
+\DeclareOption{tstl}{\renewcommand\niveau{\selectfont\sffamily\bfseries{Physique-chimie TSTL}}}
+
+% Dyslexie
+\newcommand\dysnewpage{}
+\DeclareOption{dys}{
+	\renewcommand\normalsize{%
+	   \@setfontsize\normalsize{14}{20}%
+	   \abovedisplayskip 14pt \@plus 2pt \@minus 5pt
+	}
+
+	\renewcommand{\familydefault}{\sfdefault}
+	\newgeometry{left=1cm,right=1cm,top=2cm,bottom=1.5cm}
+
+	\renewcommand\dysnewpage{\newpage}
+}
+
+% Options par défaut
+\ExecuteOptions{2nde}
+
+\ProcessOptions
+
+
+
+%------------------------------
+% Titre
+%------------------------------
+
+\newcommand\titre[1]{
+	\pagestyle{empty}
+	\begin{tikzpicture}[remember picture, overlay]
+	\node[yshift=-2cm] at (current page.north west)
+	     {
+	       \begin{tikzpicture}[remember picture, overlay, xshift=1cm]
+	%             \fill[red] (5cm,0) rectangle (\linewidth-5cm,1cm)
+	         %             node[midway] {\large\color{white}\bfseries\sffamily{}\niveau~---~Devoir surveillé~\thenumero:~#1};
+	         \draw (0.5\linewidth,0.5) node {\huge\bfseries\sffamily{}Devoir surveillé~\thenumero~:~#1};
+	       \end{tikzpicture}
+	     };
+	\end{tikzpicture}
+
+	\ifprintanswers		
+		\begin{center}			
+			\begin{tabular}{|p{2.8cm}|p{14.2cm}|}
+				\multicolumn{2}{l}{\sffamily\emph{\color{black!40}Nom~:}}
+				\\[0.3cm]
+				\hline
+				Note~:
+				& Observations~:
+				\\[2cm]
+				\hline
+			\end{tabular}
+		\end{center}
+	\fi
+}
+
+
+
+%------------------------------
+% Sections
+%------------------------------
+
+\newcommand\SecTitle[1]{%
+  \begin{tikzpicture}
+    \coordinate (bottom) at (40pt, -7pt);
+    \coordinate (top) at (120pt, 7pt);
+    \draw[color=title-color, fill=title-color, rounded corners] (bottom) rectangle (top);
+    \node (subsec) at ($(bottom)!0.5!(top)$) {\color{white}\fontsize{13pt}{16pt}\selectfont\sffamily\bfseries{Exercice~\thesection}};
+    \draw[color=title-color] (subsec.north east) node[anchor=north west] {\hspace{5pt}\fontsize{13pt}{16pt}\selectfont\sffamily\bfseries{#1}};
+\end{tikzpicture}
+}
+
+\titleformat{\section}[block]
+            {\gdef\sectionlabel{}\fontsize{14pt}{20pt}\selectfont\sffamily}
+            {\gdef\sectionlabel{\thesection #1}}
+            {0pt}{\SecTitle{#1}}
+\titleformat{name=\section,numberless}[display]
+            {\fontsize{14pt}{12pt} \selectfont \bfseries}
+            {#1}
+            {0pt}{}
+\titlespacing{\section}{0pt}{0.3cm plus 0.5cm}{-5pt}
+
+
+
+
+%------------------------------
+% Sous-sections
+%------------------------------
+
+% \newcommand\SubsecTitle[1]{%
+%   \begin{tikzpicture}
+%     \coordinate (bottom) at (40pt, -7pt);
+%     \coordinate (top) at (60pt, 7pt);
+%     \draw[color=darkgreen, fill=darkgreen, rounded corners] (bottom) rectangle (top);
+%     \node (subsec) at ($(bottom)!0.5!(top)$) {\color{white}\fontsize{13pt}{16pt}\selectfont\sffamily\bfseries{\thesubsection}};
+%     \draw[color=darkgreen] (subsec.north east) node[anchor=north west] {\hspace{5pt}\fontsize{13pt}{16pt}\selectfont\sffamily\bfseries{#1}};
+% \end{tikzpicture}
+% }
+
+\renewcommand\thesubsection{\alph{subsection}}
+\titleformat{\subsection}[block]
+            % {\gdef\subsectionlabel{}\fontsize{13pt}{16pt}\selectfont\sffamily\bfseries}
+            % {\gdef\subsectionlabel{\thesection #1}}
+            % {0pt}{\SubsecTitle{#1}}
+            {\fontsize{12pt}{18pt}\selectfont\sffamily\bfseries}
+            {\textcolor{red!70}{\thesubsection. #1}}
+            {0pt}{}
+\titleformat{name=\subsection,numberless}[display]
+            % {\fontsize{13pt}{16pt} \selectfont \bfseries}
+            % {#1}
+            % {0pt}{}
+			{\fontsize{12pt}{18pt} \selectfont \bfseries}
+            {#1}
+            {0pt}{}
+\titlespacing{\subsection}{1.5cm}{0.3cm}{0.3cm}
+
+
+
+%------------------------------
+% En-têtes et pieds de page
+%------------------------------
+
+% la classe exam définit ses propres headers/footers et n'est pas compatible avec le package fancyhdr
+
+\makeatletter
+\patchcmd{\run@fullhead}{\hrule}{\color{black}\hrule height 1.5pt}{}{}
+\makeatother
+
+% En-tête
+\renewcommand{\sectionmark}[1]{\markboth{\headmatiere\thenumero~:~#1}{}} % numéro du chapitre
+\runningheader{\color{black}\selectfont\sffamily\bfseries{\leftmark}}{}{\niveau}
+\runningheadrule
+
+% Pied de page
+\extrafootheight{0.7cm}
+\footrule
+\footer{Lycée Simone Veil}{\thepage}{2020-2021}
+
+
+
+%------------------------------
+% Commandes
+%------------------------------
+
+% Chargement des énoncés
+\newcommand\inputexo[2][Exercice~\thesection]{
+  \section{#1}
+  \input{enonces/#2}
+}
+
+
+
+
+
+
+
+%------------------------------
+% Grille de correction
+%------------------------------
+
+\newcommand\correction[1]{
+	\begin{center}
+		\begin{longtable}{|p{0.5cm}p{0.57\linewidth-0.6cm}|p{0.3\linewidth-0.6cm}|P{0.9cm}|}
+			\hline
+				\rowcolor{black!30} \multicolumn{2}{|c|}{\bf\sffamily{}Correction}
+				& \multicolumn{1}{|c|}{\bf\sffamily{}Barème}
+				& \multicolumn{1}{|c|}{\bf\sffamily{}Note}
+			\\
+				#1
+			\hline
+		\end{longtable}
+	\end{center}
+
+	\vspace{0.3cm}
+}
+
+\newcounter{questGrilleCount}
+\newcommand\questGrille[2]{
+	\hline
+		\stepcounter{questGrilleCount}\raggedleft \thequestGrilleCount)
+		& #1
+		& #2
+		&
+	\\
+}
+
+\newcounter{exoGrilleCount}
+\newcommand\exoGrille{
+	\hline
+		\multicolumn{4}{|c|}{\cellcolor{black!15}\bf\sffamily{}\setcounter{questGrilleCount}{0}\stepcounter{exoGrilleCount}Exercice~\theexoGrilleCount}
+	\\
+}

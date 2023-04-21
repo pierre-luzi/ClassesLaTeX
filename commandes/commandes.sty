@@ -1,0 +1,590 @@
+%------------------------------
+% Couleurs
+%------------------------------
+
+% package xcolor
+\definecolor{darkred}{RGB}{200,50,50}
+\definecolor{darkgreen}{RGB}{26,176,99}
+\definecolor{lightorange}{RGB}{255,178,102}
+\definecolor{LightBlueChapter}{RGB}{128,213,255}
+\definecolor{DarkBlueChapter}{RGB}{52,120,255}
+\definecolor{DarkOrangeSection}{RGB}{235,111,9}
+\definecolor{TableOrange}{RGB}{254,121,77}
+\definecolor{ToolsPurple}{RGB}{208,76,124}
+
+
+\newcommand{\docbkg}{black!15}
+
+
+%------------------------------
+% Documents
+%------------------------------
+
+% package newfloat
+\DeclareFloatingEnvironment[
+  fileext   = frm,
+  placement = {!ht},
+  name      = Doc.%,
+%  within    = chapter
+]{docfloat}
+\renewcommand{\thedocfloat}{\arabic{docfloat}}
+
+% package caption + subfloat
+\captionsetup[docfloat]{
+  justification   = raggedright,
+  margin          = 10pt,
+  singlelinecheck = false,
+  labelfont       = {color=black!60, bf, sf},
+  font            = {color=black!40, bf, sf}
+}
+
+% package mdframed
+\newcommand\doc[4][\linewidth]{
+  \begin{minipage}[t]{#1}
+    \caption{#2}
+    \label{#3}
+    \vspace{-0.5cm}
+    \begin{mdframed}[roundcorner=10pt, linecolor=\docbkg, backgroundcolor=\docbkg]
+      #4
+    \end{mdframed}
+  \end{minipage}
+}
+
+
+
+
+%------------------------------
+% Documents annexes
+%------------------------------
+
+% package newfloat
+\DeclareFloatingEnvironment[
+  fileext   = frm,
+  placement = {!ht},
+  name      = Annexe%,
+%  within    = chapter
+]{annexefloat}
+\renewcommand{\theannexefloat}{\Alph{annexefloat}}
+
+% package caption + subfloat
+\captionsetup[annexefloat]{
+  justification   = raggedright,
+  margin          = 10pt,
+  singlelinecheck = false,
+  labelfont       = {color=black, bf, sf},
+  font            = {color=black, sf}
+}
+
+% package mdframed
+\newcommand\annexe[4][\linewidth]{
+  \begin{minipage}[t]{#1}
+    \caption{#2}
+    \label{#3}
+    \vspace{-0.5cm}
+    \begin{mdframed}[roundcorner=10pt, linecolor=black, linewidth=1mm, backgroundcolor=white]
+      #4
+    \end{mdframed}
+  \end{minipage}
+}
+
+
+% package caption + subfloat
+\captionsetup[subfloat]{
+  margin          = 0pt,
+  position        = b,
+  justification   = justified,
+  singlelinecheck = true,
+  labelfont       = {color=black},
+  font            = {color=black}
+}
+
+
+
+
+%------------------------------
+% Définition
+%------------------------------
+
+\mdfdefinestyle{definition}{
+	linecolor                 = darkred,
+	linewidth                 = 1pt,
+	frametitle                = Définition,
+	frametitlefont            = {\normalfont\bf\sffamily\color{white}},
+	frametitlebackgroundcolor = darkred,
+	backgroundcolor           = white
+}
+
+
+
+%------------------------------
+% Lois et principes
+%------------------------------
+
+\mdfdefinestyle{principe}{
+	linecolor                 = DarkBlueChapter,
+	linewidth                 = 1pt,
+	frametitle                = Principe,
+	frametitlefont            = {\normalfont\bf\sffamily\color{white}},
+	frametitlebackgroundcolor = DarkBlueChapter,
+	backgroundcolor           = white
+}
+
+
+
+%------------------------------
+% Fiches méthodes
+%------------------------------
+
+% package newfloat
+\DeclareFloatingEnvironment[
+  fileext   = frm,
+  placement = {H},
+  name      = Fiche méthode:%,
+]{methodoenv}
+
+% package caption + subfloat
+\captionsetup[methodoenv]{
+  justification   = raggedright,
+  margin          = 10pt,
+  singlelinecheck = false,
+  labelformat     = empty,
+  labelfont       = {color=darkgreen!80, bf, sf},
+  font            = {color=darkgreen!80, bf, sf}
+}
+
+% package mdframed
+\newcommand\methodo[2]{
+	\begin{methodoenv}
+	  \begin{minipage}[t]{\linewidth}
+	    \caption{\faWrench~Méthode~:~#1}
+	    \vspace{-0.5cm}
+	    \begin{mdframed}[roundcorner=10pt, linecolor=darkgreen!20, backgroundcolor=darkgreen!20]
+	      #2
+	    \end{mdframed}
+	  \end{minipage}
+	\end{methodoenv}
+}
+
+
+
+
+%------------------------------
+% Données
+%------------------------------
+
+% package newfloat
+\DeclareFloatingEnvironment[
+  fileext   = frm,
+  placement = {!h},
+  name      = Données:%,
+]{dataenv}
+
+% package caption + subfloat
+\captionsetup[dataenv]{
+  justification   = raggedright,
+  margin          = 10pt,
+  singlelinecheck = false,
+  labelformat     = empty,
+  labelfont       = {color=lightorange, bf, sf},
+  font            = {color=lightorange, bf, sf}
+}
+
+% package mdframed
+\newcommand\data[2]{
+	\begin{dataenv}
+	  \begin{minipage}[t]{\linewidth}
+	    \caption{\faBook~Données~:~#1}
+	    \vspace{-0.5cm}
+	    \begin{mdframed}[roundcorner=10pt, linecolor=lightorange!50, backgroundcolor=lightorange!50]
+	      #2
+	    \end{mdframed}
+	  \end{minipage}
+	\end{dataenv}
+}
+
+
+
+%------------------------------
+% Point maths
+%------------------------------
+
+% package newfloat
+\DeclareFloatingEnvironment[
+  fileext   = frm,
+  placement = {!ht},
+  name      = Point maths:%,
+]{mathenv}
+
+% package caption + subfloat
+\captionsetup[mathenv]{
+  justification   = raggedright,
+  margin          = 10pt,
+  singlelinecheck = false,
+  labelformat     = empty,
+  labelfont       = {color=darkgreen!80, bf, sf},
+  font            = {color=darkgreen!80, bf, sf}
+}
+
+% package mdframed
+\newcommand\pointmath[3][\linewidth]{
+	\begin{mathenv}
+	  \begin{minipage}[t]{#1}
+	    \caption{\faBarChart~Point maths~:~#2}
+	    \vspace{-0.5cm}
+	    \begin{mdframed}[roundcorner=10pt, linecolor=darkgreen!20, backgroundcolor=darkgreen!20]
+	      #3
+	    \end{mdframed}
+	  \end{minipage}
+	\end{mathenv}
+}
+
+
+
+
+%------------------------------
+% Tableaux
+%------------------------------
+
+% Types de colonnes
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % colonne centrée / #1 : largeur de la cellule
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}} % colonne centrée sur plusieurs lignes / #1 : largeur de la cellule
+
+% Couleurs
+\newcommand\greenline{!{\color{darkgreen!70}\vrule}}
+\newcommand\greenrow{\rowcolor{darkgreen!40}}
+
+% Commandes pour les tableaux d'avancement
+\newcommand\firstpluscell[1]{\multicolumn{1}{|c!{\makebox[0pt]{$+$}}}{#1}}                     % cellule + début de ligne
+\newcommand\pluscell[1]{\multicolumn{1}{c!{\makebox[0pt]{$+$}}}{#1}}                           % cellule +
+\newcommand\firstarrowcell[1]{\multicolumn{1}{|c!{\makebox[0pt]{$+$}}}{#1}}                    % cellule -> début de ligne
+\newcommand\arrowcell[1]{\multicolumn{1}{c!{\makebox[0pt]{\ch{->}}}}{#1}}                      % cellule ->
+\newcommand\harpooncell[1]{\multicolumn{1}{c!{\makebox[0pt]{$\rightleftharpoons$}}}{#1}}       % cellule <-->
+\newcommand\firstharpooncell[1]{\multicolumn{1}{|c!{\makebox[0pt]{$\rightleftharpoons$}}}{#1}} % cellule <--> début de ligne
+
+
+
+%------------------------------
+% Mathématiques
+%------------------------------
+
+% Pour flécher les équations
+\newif\ifclipme\clipmetrue
+\tikzset{labelstyle/.style={LabelStyle/.append style={#1}},linestyle/.style={LineStyle/.append style={#1}}}
+\tikzset{LabelStyle/.initial={},LineStyle/.initial={}}
+
+\newcommand{\mathWithDescription}[4][]{{%
+    \tikzset{#1}%
+    \tikz[baseline, node distance=0.5cm]{
+        \node[anchor=base] (m#4) {$\displaystyle#2$};
+        \ifclipme\begin{pgfinterruptboundingbox}\fi
+            \node[below=of m#4, font=\strut, red, LabelStyle] (l#4) {#3};
+            \draw[->, red, thick, >=stealth, LineStyle] (l#4) to (m#4);
+        \ifclipme\end{pgfinterruptboundingbox}\fi
+    }%
+}}
+\newcommand{\mathWithDescriptionStarred}[4][]{{%
+    \clipmefalse%
+    \mathWithDescription[#1]{#2}{#3}{\theeqnnode}%
+}}
+
+\newcounter{eqnnode}
+\newcommand{\mathlabel}[3][]{%
+   \stepcounter{eqnnode}%
+   \mathWithDescription[#1]{#2}{#3}{\theeqnnode}%
+   \vphantom{\mathWithDescriptionStarred[#1]{#2}{#3}{\theeqnnode}}%
+}
+
+% Différentielle
+\newcommand{\dd}{\mathrm{d}}
+
+% Analyse vectorielle
+\newcommand{\rot}{\overrightarrow{\mathrm{rot}}\,}
+\newcommand{\ddiv}{\mathrm{div}\,}
+\newcommand{\grad}{\overrightarrow{\mathrm{grad}}\,}
+
+
+
+
+%------------------------------
+% Electricité
+%------------------------------
+
+\newcommand\ammeter{to node[draw,circle,fill=black!10] {{\bf A}}}    % ampèremètre
+\newcommand\voltmeter{to node[draw,circle,fill=black!10] {{\bf V}}}  % voltmètre
+\newcommand\generateur[1][fill=black!10]{to node[draw,circle, #1] {{\bf G}}} % générateur
+\newcommand\moteur[1][black!10]{to node[draw,circle,fill=#1] {{\bf M}}} % moteur
+\newcommand\dipole[1]{to node[draw, circle, fill=white] {{\bf #1}}}
+\newcommand\dipolegris[1]{to node[draw, circle, fill=black!10] {{\bf #1}}}
+
+
+% Masse
+\newcommand\masse{node {
+	\begin{tikzpicture}
+		\draw (-0.25,0) -- (0.25,0);
+		\foreach \x in {-0.2, -0.1, ..., 0.2}{
+			\draw (\x,0) --++ (-0.08,-0.1);
+		}
+	\end{tikzpicture}
+}}
+
+\newcommand\masseup{node[rotate=180] {
+	\begin{tikzpicture}
+		\draw (-0.25,0) -- (0.25,0);
+		\foreach \x in {-0.2, -0.1, ..., 0.2}{
+			\draw (\x,0) --++ (-0.08,-0.1);
+		}
+	\end{tikzpicture}
+}}
+
+
+
+% Flèches en couleur pour le courant électrique
+\makeatletter
+\ctikzset{current arrow color/.initial=black} % create key
+
+\pgfdeclareshape{currarrow}{
+    \anchor{center}{
+        \pgfpointorigin
+    }
+        \anchor{tip}{
+        \pgfpointorigin
+            \pgf@circ@res@step = \pgf@circ@Rlen
+                \divide \pgf@circ@res@step by 16
+        \pgf@x  =\pgf@circ@res@step
+        }
+    \behindforegroundpath{
+
+        \pgfscope
+            \pgf@circ@res@step = \pgf@circ@Rlen
+            \divide \pgf@circ@res@step by 16
+
+            \pgfpathmoveto{\pgfpoint{-.7\pgf@circ@res@step}{0pt}}
+            \pgfpathlineto{\pgfpoint{-.7\pgf@circ@res@step}{-.8\pgf@circ@res@step}}
+            \pgfpathlineto{\pgfpoint{1\pgf@circ@res@step}{0pt}}
+            \pgfpathlineto{\pgfpoint{-.7\pgf@circ@res@step}{.8\pgf@circ@res@step}}
+            \pgfpathlineto{\pgfpoint{-.7\pgf@circ@res@step}{0pt}}
+            \pgfsetcolor{\pgfkeysvalueof{/tikz/circuitikz/current arrow color}}
+            \pgfusepath{draw,fill}
+        \endpgfscope
+    }
+}
+\makeatother
+
+\tikzstyle{elec}=[circuitikz/current arrow color=red]
+
+
+
+%------------------------------
+% Chimie
+%------------------------------
+
+% Constante d'Avogadro
+\newcommand\NA{\ensuremath{N_{\text{A}}}}
+
+% Concentrations
+\newcommand\concentration[1]{[\ch{#1}]}
+\newcommand\conceq[1]{\ensuremath{\concentration{#1}_{\text{éq}}}}
+\newcommand\xeq{\ensuremath{x_{\text{éq}}}}
+\newcommand\xieq{\ensuremath{\xi_{\text{éq}}}}
+\newcommand\molaire{\mole.\reciprocal\liter}
+
+% Constantes d'équilibres
+\newcommand\pKs{\ensuremath{\text{p}K_{\text{s}}}}
+\newcommand\Ks{\ensuremath{K_{\text{s}}}}
+\newcommand\Ke{\ensuremath{K_{\text{e}}}}
+
+% Représentation de molécules
+\newcommand\inputchemfig[1]{
+  \input{/Users/luzi/Documents/LaTeX/chimie/chemfig/#1}
+}
+
+% Pictogrammes de sécurité
+\newcommand\inputpicto[2][2cm]{
+  \includegraphics[height=#1]{/Users/luzi/Documents/LaTeX/chimie/pictos/#2}
+}
+
+% Liaisons covalentes et doublets d'électrons
+\newcommand{\liaisonel}[3]{
+  \begin{scope}[xshift=#1cm, yshift=#2cm, rotate=#3]
+        \draw (-0.2,0) node[scale=0.4] {$\bullet$};
+            \draw (0.2,0) node[scale=0.4] {$\bullet$};
+                \draw[color=red] (0,0) ellipse (0.3 and 0.08);
+                \end{scope}
+}
+
+\newcommand{\Doubliant}[2]{
+	\coordinate (N) at (#1);
+	\draw ($(N)+(#2:0.2)$) node[scale=0.4] {$\bullet$};
+	\draw ($(N)+(#2:-0.2)$) node[scale=0.4] {$\bullet$};
+}
+
+\newcommand{\doubliant}[2]{
+	\coordinate (N) at (#1);
+	\draw ($(N)+(#2:0.2)$) node[scale=0.4] {$\bullet$};
+	\draw ($(N)+(#2:-0.2)$) node[scale=0.4] {$\bullet$};
+	\draw[rotate around={#2:(N)}, color=red] (N) ellipse (0.3 and 0.08);	
+}
+
+\newcommand{\nonliantel}[3]{
+  \begin{scope}[xshift=#1cm, yshift=#2cm, rotate=#3]
+        \draw (-0.07,0) node[scale=0.4] {$\bullet$};
+            \draw (0.07,0) node[scale=0.4] {$\bullet$};
+                \draw[color=blue] (0,0) ellipse (0.2 and 0.08);
+                \end{scope}
+}
+
+\newcommand{\Nonliant}[2]{
+	\coordinate (N) at (#1);
+	\draw ($(N)+(#2:0.07)$) node[scale=0.4] {$\bullet$};
+	\draw ($(N)+(#2:-0.07)$) node[scale=0.4] {$\bullet$};
+}
+
+\newcommand{\nonliant}[2]{
+	\coordinate (N) at (#1);
+	\draw ($(N)+(#2:0.07)$) node[scale=0.4] {$\bullet$};
+	\draw ($(N)+(#2:-0.07)$) node[scale=0.4] {$\bullet$};
+	\draw[rotate around={#2:(N)}, color=blue] (N) ellipse (0.2 and 0.08);	
+}
+
+
+
+%------------------------------
+% Physique nucléaire
+%------------------------------
+
+% notation des isotopes (package mathtools)
+\newcommand{\noyau}[3]{{\prescript{#2}{#3}{\ch{#1}}}} % mise en forme des isotopes
+% exemple : \noyau{U}{235}{92}
+% -> On utilisera plutôt la commande \isotope du module chemmacros :
+% \isotope{C} -> \noyau{C}{12}{6}
+% \isotope*{C} -> \noyau{C}{12}{}
+% \isotope{14,C} -> \noyau{C}{14}{6}
+% \isotope*{14,C} -> \noyau{C}{14}{}
+
+
+
+% petit noyau
+\newcommand\smallnucleus[1][1]{
+	\begin{tikzpicture}
+		\pgfmathdeclarerandomlist{color}{{red}{white}}
+		\pgfmathsetseed{#1}
+		\foreach \A/\R in {8/0.32,5/0.18,1/0}{
+		      \pgfmathsetmacro{\S}{360/\A}
+	           \foreach \B in {0,\S,...,360}{
+	               \pgfmathrandomitem{\C}{color}
+	               \shade[ball color=\C] (\B+\A:\R) circle (5pt);
+	           }
+		}
+	\end{tikzpicture}
+}
+
+% noyau moyen
+\newcommand\nucleus[1][1]{
+	\begin{tikzpicture}
+		\pgfmathdeclarerandomlist{color}{{red}{white}}
+		\pgfmathsetseed{#1}
+		\foreach \A/\R in {12/0.42,7/0.3,1/0}{
+		      \pgfmathsetmacro{\S}{360/\A}
+	           \foreach \B in {0,\S,...,360}{
+	               \pgfmathrandomitem{\C}{color}
+	               \shade[ball color=\C] (\B+\A:\R) circle (5pt);
+	           }
+		}
+	\end{tikzpicture}
+}
+
+% gros noyau
+\newcommand\bignucleus[1][1]{
+	\begin{tikzpicture}
+		\pgfmathdeclarerandomlist{color}{{red}{white}}
+		\pgfmathsetseed{#1}
+		\foreach \A/\R in {20/0.62,12/0.5,7/0.3,1/0}{
+		      \pgfmathsetmacro{\S}{360/\A}
+	           \foreach \B in {0,\S,...,360}{
+	               \pgfmathrandomitem{\C}{color}
+	               \shade[ball color=\C] (\B+\A:\R) circle (5pt);
+	           }
+		}
+	\end{tikzpicture}
+}
+
+\newcommand\proton{
+	\begin{tikzpicture}
+		\shade[ball color=red] (0,0) circle (5pt);
+	\end{tikzpicture}
+}
+
+\newcommand\neutron{
+	\begin{tikzpicture}
+		\shade[ball color=white] (0,0) circle (5pt);
+	\end{tikzpicture}
+}
+
+
+
+%------------------------------
+% Unités
+%------------------------------
+
+\DeclareSIUnit{\massemolaire}{\gram.\mole\tothe{-1}}
+\DeclareSIUnit{\cmass}{\gram.\liter\tothe{-1}}
+\DeclareSIUnit{\cmol}{\mole.\liter\tothe{-1}}
+
+
+
+%------------------------------
+% Divers
+%------------------------------
+
+% Données
+\newcommand\donnees[1]{
+      \textcolor{black!60}{
+        \vspace{0.2cm}
+	{\small\bfseries\underline{Données :}}
+	\begin{itemize}[label=$\bullet$, leftmargin=5mm]
+		\small
+		#1
+	\end{itemize}
+      }
+}
+
+% Compétences
+\newcommand\lc[2]{#1 & #2 & & & & \\ \hline}
+\newenvironment{comp}{
+  \begin{center}
+    \begin{tabular}{|c|C{10cm}|c|c|c|c|}
+      \hline
+      \rowcolor[RGB]{225,225,225}\multicolumn{2}{|c|}{{\bf Compétences}} & {\bf A} & {\bf B} & {\bf C} & {\bf D} \\
+      \hline
+}
+{
+    \end{tabular}
+  \end{center}
+}
+
+
+% Flèche en milieu de segment
+\tikzset{
+  mid arrow/.style={postaction={decorate,decoration={
+        markings,
+        mark=at position .5 with {\arrow[#1]{stealth}}
+      }}},
+}
+
+% Symboles fontawesome
+% \newcommand\outils[2]{\tikz{\draw[purple!70] (0,0) node[left] {\faWrench} node[right, xscale=-1] {\faScrewdriver} node[right, anchor=west] {\textbf{Fiche outils #1~: #2}};}}
+\newcommand\outils[2]{\includegraphics[height=0.3cm]{logo-couleur}~\textbf{\color{ToolsPurple}Fiche outils #1~: #2}}
+\newcommand\exo{\textcolor{darkgreen}{\faPencilSquareO~Exercice : }}
+\newcommand\docu{\textcolor{darkgreen}{\faBook~Activité documentaire : }}
+\newcommand\manip{\textcolor{darkgreen}{\faFlask~Manip : }}
+\newcommand\expe{\textcolor{darkgreen}{\faFlask~Activité expérimentale : }}
+\newcommand\video{\textcolor{darkgreen}{\faYoutubePlay~Vidéo : }}
+\newcommand\lien{\textcolor{darkgreen}{\faAt~Site : }}
+\newcommand\attention[1]{{\color{red}\faExclamationTriangle~#1}}
+\newcommand\dm[1]{\textcolor{darkgreen}{\faHome~Devoir maison~:} #1}
+
+% Texte à trou
+\newcommand\trou[1]{\underline{\phantom{\hspace{0.6cm}#1\hspace{0.6cm}}}}
+
+% Caractère entouré
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
