@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{activites}[2020/06/13 Activites documentaires]
+\ProvidesClass{activites}[2023/04/22 Activites documentaires]
 
 \LoadClass[11pt,a4paper]{exam}
 \RequirePackage{packages}
@@ -64,18 +64,15 @@
 
 % Matière
 \newcommand\matiere{}
-\newcommand\headmatiere{}
 \DeclareOption{chi}{
 	% \renewcommand\matiere{\raisebox{5pt}{\boldmath$\upchi$}}
 	% \renewcommand\headmatiere{\raisebox{2.35pt}{\boldmath$\upchi$}}
 	\renewcommand\matiere{C}
-	\renewcommand\headmatiere{C}
 }
 \DeclareOption{phy}{
 	% \renewcommand\matiere{\raisebox{3pt}{\boldmath$\upphi$}}
 	% \renewcommand\headmatiere{\raisebox{1.5pt}{\boldmath$\upphi$}}
 	\renewcommand\matiere{P}
-	\renewcommand\headmatiere{P}
 }
 
 
@@ -94,8 +91,6 @@
 	\renewcommand\typeact{expérimentale}
 	\renewcommand\coloract{darkgreen}
 	\renewcommand\lightcoloract{darkgreen!50}
-	% \renewcommand\coloract{black}
-	% \renewcommand\lightcoloract{black!50}
 }
 \DeclareOption{num}{
 	\renewcommand\typeact{numérique}
