@@ -68,18 +68,6 @@
 % Options de la classe
 %------------------------------
 
-% Matière
-\newcommand\secmatiere{}
-\newcommand\headmatiere{}
-\DeclareOption{chi}{
-  \renewcommand\secmatiere{\raisebox{5pt}{\boldmath$\upchi$}}
-  \renewcommand\headmatiere{\raisebox{2.35pt}{\boldmath$\upchi$}}
-}
-\DeclareOption{phy}{
-  \renewcommand\secmatiere{\raisebox{3pt}{\boldmath$\upphi$}}
-  \renewcommand\headmatiere{\raisebox{1.5pt}{\boldmath$\upphi$}}
-}
-
 % Niveau
 \newcommand\niveau{}
 \DeclareOption{2nde}{\renewcommand\niveau{\selectfont\sffamily\bfseries{Physique-chimie 2\up{nde}}}}
@@ -234,20 +222,6 @@
 %------------------------------
 
 % la classe exam définit ses propres headers/footers et n'est pas compatible avec le package fancyhdr
-
-% \makeatletter
-% \patchcmd{\run@fullhead}{\hrule}{\color{black}\hrule height 1.5pt}{}{}
-% \makeatother
-%
-% En-tête
-% \renewcommand{\sectionmark}[1]{\markboth{\headmatiere\thenumero~:~#1}{}} % numéro du chapitre
-% \runningheader{\color{black}\selectfont\sffamily\bfseries{\leftmark}}{}{\niveau}
-% \runningheadrule
-%
-% Pied de page
-% \extrafootheight{0.7cm}
-% % \footrule
-% \footer{\selectfont\sffamily Lycée Simone Veil}{}{\selectfont\sffamily Page \thepage{} sur \pageref{LastPage}}
 \pagestyle{empty}
 
 
