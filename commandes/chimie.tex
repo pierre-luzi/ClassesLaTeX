@@ -1,0 +1,70 @@
+% Constante d'Avogadro
+\newcommand\NA{\ensuremath{N_{\text{A}}}}
+
+% Concentrations
+\newcommand\concentration[1]{[\ch{#1}]}
+\newcommand\conceq[1]{\ensuremath{\concentration{#1}_{\text{éq}}}}
+\newcommand\xeq{\ensuremath{x_{\text{éq}}}}
+\newcommand\xieq{\ensuremath{\xi_{\text{éq}}}}
+\newcommand\molaire{\mole.\reciprocal\liter}
+
+% Constantes d'équilibres
+\newcommand\pKs{\ensuremath{\text{p}K_{\text{s}}}}
+\newcommand\Ks{\ensuremath{K_{\text{s}}}}
+\newcommand\Ke{\ensuremath{K_{\text{e}}}}
+
+% Inclure des représentations de molécules déjà prêtes
+\newcommand\inputchemfig[1]{
+  \input{/Users/luzi/Documents/LaTeX/chimie/chemfig/#1}
+}
+
+% Pictogrammes de sécurité
+% Pictogrammes disponibles :
+%	- cancer		- corrosif		- danger		- explosif
+%	- inflammable	- polluant		- pression		- toxique
+\newcommand\inputpicto[2][2cm]{
+  \includegraphics[height=#1]{/Users/luzi/Documents/LaTeX/chimie/pictos/#2}
+}
+
+% Liaisons covalentes et doublets d'électrons
+\newcommand{\liaisonel}[3]{
+  \begin{scope}[xshift=#1cm, yshift=#2cm, rotate=#3]
+        \draw (-0.2,0) node[scale=0.4] {$\bullet$};
+            \draw (0.2,0) node[scale=0.4] {$\bullet$};
+                \draw[color=red] (0,0) ellipse (0.3 and 0.08);
+                \end{scope}
+}
+
+\newcommand{\Doubliant}[2]{
+	\coordinate (N) at (#1);
+	\draw ($(N)+(#2:0.2)$) node[scale=0.4] {$\bullet$};
+	\draw ($(N)+(#2:-0.2)$) node[scale=0.4] {$\bullet$};
+}
+
+\newcommand{\doubliant}[2]{
+	\coordinate (N) at (#1);
+	\draw ($(N)+(#2:0.2)$) node[scale=0.4] {$\bullet$};
+	\draw ($(N)+(#2:-0.2)$) node[scale=0.4] {$\bullet$};
+	\draw[rotate around={#2:(N)}, color=red] (N) ellipse (0.3 and 0.08);	
+}
+
+\newcommand{\nonliantel}[3]{
+  \begin{scope}[xshift=#1cm, yshift=#2cm, rotate=#3]
+        \draw (-0.07,0) node[scale=0.4] {$\bullet$};
+            \draw (0.07,0) node[scale=0.4] {$\bullet$};
+                \draw[color=blue] (0,0) ellipse (0.2 and 0.08);
+                \end{scope}
+}
+
+\newcommand{\Nonliant}[2]{
+	\coordinate (N) at (#1);
+	\draw ($(N)+(#2:0.07)$) node[scale=0.4] {$\bullet$};
+	\draw ($(N)+(#2:-0.07)$) node[scale=0.4] {$\bullet$};
+}
+
+\newcommand{\nonliant}[2]{
+	\coordinate (N) at (#1);
+	\draw ($(N)+(#2:0.07)$) node[scale=0.4] {$\bullet$};
+	\draw ($(N)+(#2:-0.07)$) node[scale=0.4] {$\bullet$};
+	\draw[rotate around={#2:(N)}, color=blue] (N) ellipse (0.2 and 0.08);	
+}

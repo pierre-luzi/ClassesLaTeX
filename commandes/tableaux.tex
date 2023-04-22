@@ -1,0 +1,15 @@
+% Types de colonnes
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % colonne centrée / #1 : largeur de la cellule
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}} % colonne centrée sur plusieurs lignes / #1 : largeur de la cellule
+
+% Couleurs
+\newcommand\greenline{!{\color{darkgreen!70}\vrule}}
+\newcommand\greenrow{\rowcolor{darkgreen!40}}
+
+% Commandes pour les tableaux d'avancement
+\newcommand\firstpluscell[1]{\multicolumn{1}{|c!{\makebox[0pt]{$+$}}}{#1}}                     % cellule + début de ligne
+\newcommand\pluscell[1]{\multicolumn{1}{c!{\makebox[0pt]{$+$}}}{#1}}                           % cellule +
+\newcommand\firstarrowcell[1]{\multicolumn{1}{|c!{\makebox[0pt]{$+$}}}{#1}}                    % cellule -> début de ligne
+\newcommand\arrowcell[1]{\multicolumn{1}{c!{\makebox[0pt]{\ch{->}}}}{#1}}                      % cellule ->
+\newcommand\harpooncell[1]{\multicolumn{1}{c!{\makebox[0pt]{$\rightleftharpoons$}}}{#1}}       % cellule <-->
+\newcommand\firstharpooncell[1]{\multicolumn{1}{|c!{\makebox[0pt]{$\rightleftharpoons$}}}{#1}} % cellule <--> début de ligne

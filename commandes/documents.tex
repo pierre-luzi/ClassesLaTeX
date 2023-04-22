@@ -1,0 +1,233 @@
+% Propriétés de la légende des subfloat
+\captionsetup[subfloat]{ % package caption + subfloat
+  margin          = 0pt,
+  position        = b,
+  justification   = justified,
+  singlelinecheck = true,
+  labelfont       = {color=black},
+  font            = {color=black}
+}
+
+
+
+%------------------------------
+% Documents
+%------------------------------
+
+% Définit un environnement pour réaliser des documents
+
+% environnement flottant docfloat
+\DeclareFloatingEnvironment[ % package newfloat
+  fileext   = frm,
+  placement = {!ht},
+  name      = Doc.%,
+%  within    = chapter
+]{docfloat}
+\renewcommand{\thedocfloat}{\arabic{docfloat}}
+
+% propriétés de la légende
+\captionsetup[docfloat]{ % package caption + subfloat
+  justification   = raggedright,
+  margin          = 10pt,
+  singlelinecheck = false,
+  labelfont       = {color=black!60, bf, sf},
+  font            = {color=black!40, bf, sf}
+}
+
+% mise en forme du document
+\newcommand{\docbkg}{black!15} % couleur de fond des documents
+\newcommand\doc[4][\linewidth]{
+  \begin{minipage}[t]{#1}
+    \caption{#2}
+    \label{#3}
+    \vspace{-0.5cm}
+    \begin{mdframed}[roundcorner=10pt, linecolor=\docbkg, backgroundcolor=\docbkg]
+      #4
+    \end{mdframed}
+  \end{minipage}
+}
+
+
+
+%------------------------------
+% Documents annexes
+%------------------------------
+
+% Définit un environnement pour réaliser des documents annexes
+
+% environnement flottant annexefloat
+\DeclareFloatingEnvironment[ % package newfloat
+  fileext   = frm,
+  placement = {!ht},
+  name      = Annexe%,
+%  within    = chapter
+]{annexefloat}
+\renewcommand{\theannexefloat}{\Alph{annexefloat}}
+
+% propriétés de la légende
+\captionsetup[annexefloat]{ % package caption + subfloat
+  justification   = raggedright,
+  margin          = 10pt,
+  singlelinecheck = false,
+  labelfont       = {color=black, bf, sf},
+  font            = {color=black, sf}
+}
+
+% mise en forme du document annexe
+\newcommand\annexe[4][\linewidth]{
+  \begin{minipage}[t]{#1}
+    \caption{#2}
+    \label{#3}
+    \vspace{-0.5cm}
+    \begin{mdframed}[roundcorner=10pt, linecolor=black, linewidth=1mm, backgroundcolor=white]
+      #4
+    \end{mdframed}
+  \end{minipage}
+}
+
+
+
+%------------------------------
+% Points de méthode
+%------------------------------
+
+% Définit un environnement pour réaliser des points de méthode
+
+% environnement flottat methodoenv
+\DeclareFloatingEnvironment[ % package newfloat
+  fileext   = frm,
+  placement = {H},
+  name      = Fiche méthode:%,
+]{methodoenv}
+
+% propriétés de la légende
+\captionsetup[methodoenv]{ % package caption + subfloat
+  justification   = raggedright,
+  margin          = 10pt,
+  singlelinecheck = false,
+  labelformat     = empty,
+  labelfont       = {color=darkgreen!80, bf, sf},
+  font            = {color=darkgreen!80, bf, sf}
+}
+
+% mise en forme du point de méthode
+\newcommand\methodo[2]{
+	\begin{methodoenv}
+	  \begin{minipage}[t]{\linewidth}
+	    \caption{\faWrench~Méthode~:~#1}
+	    \vspace{-0.5cm}
+	    \begin{mdframed}[roundcorner=10pt, linecolor=darkgreen!20, backgroundcolor=darkgreen!20]
+	      #2
+	    \end{mdframed}
+	  \end{minipage}
+	\end{methodoenv}
+}
+
+
+
+
+%------------------------------
+% Données
+%------------------------------
+
+% Définit un environnement pour indiquer des données
+
+% environnement flottant dataenv
+\DeclareFloatingEnvironment[ % package newfloat
+  fileext   = frm,
+  placement = {!h},
+  name      = Données:%,
+]{dataenv}
+
+% propriétés de la légende
+\captionsetup[dataenv]{ % package caption + subfloat
+  justification   = raggedright,
+  margin          = 10pt,
+  singlelinecheck = false,
+  labelformat     = empty,
+  labelfont       = {color=lightorange, bf, sf},
+  font            = {color=lightorange, bf, sf}
+}
+
+% mise en forme des données
+\newcommand\data[2]{
+	\begin{dataenv}
+	  \begin{minipage}[t]{\linewidth}
+	    \caption{\faBook~Données~:~#1}
+	    \vspace{-0.5cm}
+	    \begin{mdframed}[roundcorner=10pt, linecolor=lightorange!50, backgroundcolor=lightorange!50]
+	      #2
+	    \end{mdframed}
+	  \end{minipage}
+	\end{dataenv}
+}
+
+
+
+%------------------------------
+% Points maths
+%------------------------------
+
+% Définit un environnement pour réaliser des points mathématiques
+
+% environnement flottant mathenv
+\DeclareFloatingEnvironment[ % package newfloat
+  fileext   = frm,
+  placement = {!ht},
+  name      = Point maths:%,
+]{mathenv}
+
+% propriétés de la légende
+\captionsetup[mathenv]{ % package caption + subfloat
+  justification   = raggedright,
+  margin          = 10pt,
+  singlelinecheck = false,
+  labelformat     = empty,
+  labelfont       = {color=darkgreen!80, bf, sf},
+  font            = {color=darkgreen!80, bf, sf}
+}
+
+% mise en page du point maths
+\newcommand\pointmath[3][\linewidth]{
+	\begin{mathenv}
+	  \begin{minipage}[t]{#1}
+	    \caption{\faBarChart~Point maths~:~#2}
+	    \vspace{-0.5cm}
+	    \begin{mdframed}[roundcorner=10pt, linecolor=darkgreen!20, backgroundcolor=darkgreen!20]
+	      #3
+	    \end{mdframed}
+	  \end{minipage}
+	\end{mathenv}
+}
+
+
+
+%------------------------------
+% Définition
+%------------------------------
+
+% mise en page des définitions
+\mdfdefinestyle{definition}{
+	linecolor                 = darkred,
+	linewidth                 = 1pt,
+	frametitle                = Définition,
+	frametitlefont            = {\normalfont\bf\sffamily\color{white}},
+	frametitlebackgroundcolor = darkred,
+	backgroundcolor           = white
+}
+
+
+
+%------------------------------
+% Lois et principes
+%------------------------------
+
+% mise en page des lois et principes
+\mdfdefinestyle{principe}{
+	linecolor                 = DarkBlueChapter,
+	linewidth                 = 1pt,
+	frametitle                = Principe,
+	frametitlefont            = {\normalfont\bf\sffamily\color{white}},
+	frametitlebackgroundcolor = DarkBlueChapter,
+	backgroundcolor           = white
+}
